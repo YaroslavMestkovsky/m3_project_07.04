@@ -7,7 +7,7 @@ setup(
     description='m3_project, version 1.0',
     author='Yaroslav M.',
     author_email='mestkovskyyaroslavd@mail.ru',
-    url='https://github.com/YaroslavMestkovsky',
+    url='https://github.com/YaroslavMestkovsky/m3_project_07.04',
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
