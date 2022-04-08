@@ -1,111 +1,33 @@
-from .models import ContentType, User, Group, Permission
 from objectpack.actions import ObjectPack
 from objectpack.ui import ModelEditWindow
 from . import ui
+from django.contrib.auth.models import User, ContentType, Group, Permission
+from . import controller
 
 
 class ContentTypePack(ObjectPack):
     model = ContentType
     add_to_desktop = True
     add_to_meny = True
-
-    edit_window = add_window = ModelEditWindow.fabricate(model)
-
-    columns = [
-        {
-            'data_index': 'name',
-            'sortable': True,
-            'sort_fields': ('name', 'codename',)
-
-        },
-        {
-            'data_index': 'content_type',
-            'sortable': True,
-            'sort_fields': ('content_type',)
-        },
-        {
-            'data_index': 'codename',
-            'sortable': True,
-            'sort_fields': ('codename',)
-        }
-    ]
+    add_window = edit_window = ModelEditWindow.fabricate(model=ContentType)
 
 
 class GroupPack(ObjectPack):
     model = Group
     add_to_desktop = True
     add_to_meny = True
-
-    edit_window = add_window = ModelEditWindow.fabricate(model)
-
-    columns = [
-        {
-            'data_index': 'name',
-            'sortable': True,
-            'sort_fields': ('name', 'codename',)
-
-        },
-        {
-            'data_index': 'content_type',
-            'sortable': True,
-            'sort_fields': ('content_type',)
-        },
-        {
-            'data_index': 'codename',
-            'sortable': True,
-            'sort_fields': ('codename',)
-        }
-    ]
+    add_window = edit_window = ModelEditWindow.fabricate(model=Group)
 
 
 class PermissionPack(ObjectPack):
     model = Permission
     add_to_desktop = True
     add_to_meny = True
-
-    edit_window = add_window = ModelEditWindow.fabricate(model)
-
-    columns = [
-        {
-            'data_index': 'name',
-            'sortable': True,
-            'sort_fields': ('name', 'codename',)
-
-        },
-        {
-            'data_index': 'content_type',
-            'sortable': True,
-            'sort_fields': ('content_type',)
-        },
-        {
-            'data_index': 'codename',
-            'sortable': True,
-            'sort_fields': ('codename',)
-        }
-    ]
+    add_window = edit_window = ModelEditWindow.fabricate(model=Permission, model_register=controller.observer)
 
 
 class UserPack(ObjectPack):
     model = User
-    add_window = ui.UserAddWindow
-    edit_window = ui.UserEditWindow
     add_to_desktop = True
-    add_to_meny = True
-    columns = [
-        {
-            'data_index': 'name',
-            'sortable': True,
-            'sort_fields': ('name', 'codename',)
-
-        },
-        {
-            'data_index': 'content_type',
-            'sortable': True,
-            'sort_fields': ('content_type',)
-        },
-        {
-            'data_index': 'codename',
-            'sortable': True,
-            'sort_fields': ('codename',)
-        }
-    ]
+    add_to_menu = True
+    add_window = edit_window = ui.UserAddWindow
